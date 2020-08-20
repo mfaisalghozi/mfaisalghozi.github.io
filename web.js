@@ -23,6 +23,7 @@ mongoose.connect('mongodb://localhost:27017/mrafcommand_website_db', {
 
 //MODEL FILE
 var Article = require('./models/article');
+var Podcast = require('./models/podcast');
 
 //APP CONFIG
 app.use(methodOverride('_method'));
@@ -32,36 +33,95 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('views'));
 app.set('view engine', 'ejs');
 
-
-//ALL ROUTE GOING TO MAIN,ARTICLE,PODCAST PAGE
-app.get('/', function (req, res) {
-    res.render('home');
-})
-
+//=====
+//ROUTE ARTICLE
+//=====
 app.get('/article', function (req, res) {
-    res.render('article');
-})
+    Article.find({}, function (err, article) {
+        if (err) console.log(err);
+        else res.render('article', {
+            data: article
+        });
+    });
+});
+
+app.get('/article/new', function (req, res) {
+    res.render('articleNew');
+});
+
+app.post('/article', function (req, res) {
+    var d = new Date();
+    var newArticle = new Article({
+        name: String,
+        image: String,
+        Text: String,
+        Date: d.toString(),
+        Category: String
+    })
+
+    newArticle.save(function (err) {
+        if (err) console.log(err);
+        else console.log('New Article has been published !');
+    })
+
+    res.redirect('/article');
+});
 
 app.get('/article/:id', function (req, res) {
     var id = req.params.id;
     res.render('article_show');
-})
+});
 
+app.get('/article/:id/edit', function (req, res) {
+
+});
+
+app.get('/article/:id/delete', function (req, res) {
+
+});
+
+//=====
+//ROUTE PODCAST
+//=====
 app.get('/podcast', function (req, res) {
     res.render('podcast');
+});
+
+app.get('/podcast/new', function (req, res) {
+    res.render('podcastNew');
+});
+
+app.post('/podcast', function (req, res) {
+    var newPodcast = new Podcast({
+        podcastUrl: String
+    });
+
+    newPodcast.save(function (err) {
+        if (err) console.log(err);
+        else console.log('New Podcast is Release !');
+    })
+
+    res.redirect('/podcast');
 })
 
-//ROUTE ARTICLE ADD-EDIT-DELETE
+//=====
+//ROUTE FOR MAIN CONFIG
+//=====
+app.get('/', function (req, res) {
+    res.render('home');
+});
 
+app.get('/register', function (req, res) {
+    res.render('register');
+});
 
-//ROUTE FOR REGISTERING-LOGIN
+app.get('/login', function (req, res) {
+    res.render('login');
+});
 
-
-
-//
-
+app.get('/logout', function (req, res) {});
 
 //CREATING CONNECTION
 app.listen('3000', function () {
     console.log('MrafCommand Website Server Is Running !');
-})
+});
