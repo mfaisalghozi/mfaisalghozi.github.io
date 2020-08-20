@@ -33,6 +33,23 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('views'));
 app.set('view engine', 'ejs');
 
+
+//=====
+//API TESTING 
+//=====
+app.get('/testingApi', function (req, res) {
+    //ERROR STATUS CODE 401 (UNAUTORIZED)
+    var url = 'https://api.spotify.com/v1/shows/{id}/episodes';
+    axios.get(url)
+        .then(function (response) {
+            if (response.status == 200) {
+                var body = response.data;
+                console.log(body);
+            }
+        })
+});
+
+
 //=====
 //ROUTE ARTICLE
 //=====
@@ -49,14 +66,15 @@ app.get('/article/new', function (req, res) {
     res.render('articleNew');
 });
 
+
 app.post('/article', function (req, res) {
     var d = new Date();
     var newArticle = new Article({
-        name: String,
-        image: String,
-        Text: String,
-        Date: d.toString(),
-        Category: String
+        name: req.body.title,
+        image: req.body.image,
+        text: req.body.content,
+        date: d.toDateString(),
+        category: req.body.category
     })
 
     newArticle.save(function (err) {
@@ -84,7 +102,12 @@ app.get('/article/:id/delete', function (req, res) {
 //ROUTE PODCAST
 //=====
 app.get('/podcast', function (req, res) {
-    res.render('podcast');
+    Podcast.find({}, function (err, podcast) {
+        if (err) console.log(err);
+        else res.render('podcast', {
+            data: podcast
+        })
+    })
 });
 
 app.get('/podcast/new', function (req, res) {

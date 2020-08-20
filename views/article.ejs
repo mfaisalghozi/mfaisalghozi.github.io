@@ -107,7 +107,7 @@
         <div class="ui hidden divider"></div>
         <div class="container">
             <div class="row my-5">
-                <% data.forEach(function(article)){%>
+                <% data.forEach(function(article){%>
                 <div class="col-lg-4">
                     <div class="card mb-5" style="height: 410px;">
                         <img class=" card-img-top" src="<%= article.image %> " alt="Card image cap"
@@ -115,117 +115,12 @@
                         <div class="card-body mx-auto">
                             <h5 class="card-title"><%= article.name %> </h5>
                             <h6 class="card-subtitle mb-2 text-muted"><%= article.date %> </h6>
-                            <p class="card-text"><%= article.text.subStrign(0, 100) %>...</p>
+                            <p class="card-text"><%= article.text.substring(0, 100) %>...</p>
                             <a href="/article/<%= article._id %> " class="btn btn-primary">Read More</a>
                         </div>
                     </div>
                 </div>
-                <% } %>
-                <div class="col-lg-4">
-                    <div class="card mb-5" style="height: 410px;">
-                        <img class=" card-img-top"
-                            src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/andromeda-galaxy-royalty-free-image-1585682435.jpg"
-                            alt="Card image cap" style="height: 190px;">
-                        <div class="card-body mx-auto">
-                            <h5 class="card-title">What We Can Learn From Space !!</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">17 July 2020</h6>
-                            <p class="card-text">Yes I know you probably disregarded the earlier boasts as
-                                non-sequitur filler content, but its really
-                                true....</p>
-                            <a href="/article/123" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card mb-3" style="height: 410px;">
-                        <img class=" card-img-top"
-                            src="https://static.bangkokpost.com/media/content/dcx/2020/01/15/3488069.jpg"
-                            alt="Card image cap" style="height: 190px;">
-                        <div class="card-body mx-auto">
-                            <h5 class="card-title">How To Become Pro In Valorant</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">17 July 2020</h6>
-                            <p class="card-text">Yes I know you probably disregarded the earlier boasts as
-                                non-sequitur filler content, but its really
-                                true....</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card mb-3" style="height: 410px;">
-                        <img class=" card-img-top"
-                            src="https://cdn.britannica.com/44/22944-050-20DB2F82/Plato-Aristotle-philosophers-detail-Raphael-School-of.jpg"
-                            alt="Card image cap" style="height: 190px;">
-                        <div class="card-body mx-auto">
-                            <h5 class="card-title">What Acient Greek Tried To Told Us ?</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">17 July 2020</h6>
-                            <p class="card-text">Yes I know you probably disregarded the earlier boasts as
-                                non-sequitur filler content, but its really
-                                true....</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card mb-3" style="height: 410px;">
-                        <img class=" card-img-top"
-                            src="https://www.themonsterlab.com/wp-content/uploads/2020/07/2.-Cara-Chat-All-Di-Valorant-Dan-Tips-Menarik-Terbaru.png"
-                            alt="Card image cap" style="height: 190px;">
-                        <div class="card-body mx-auto">
-                            <h5 class="card-title">How To Become Pro In Valorant</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">17 July 2020</h6>
-                            <p class="card-text">Yes I know you probably disregarded the earlier boasts as
-                                non-sequitur filler content, but its really
-                                true....</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card mb-3" style="height: 410px;">
-                        <img class=" card-img-top"
-                            src="https://cdn.vox-cdn.com/thumbor/HCjgqG4PpB7EW6QIF8xmH3D9QNM=/0x16:878x476/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/19754183/Screen_Shot_2020_02_28_at_9.36.56_AM.png"
-                            alt="Card image cap" style="height: 190px;">
-                        <div class="card-body mx-auto">
-                            <h5 class="card-title">Be Good Programmer</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">17 July 2020</h6>
-                            <p class="card-text">Yes I know you probably disregarded the earlier boasts as
-                                non-sequitur filler content, but its really
-                                true....</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card mb-3" style="height: 410px;">
-                        <img class=" card-img-top"
-                            src="https://i.pinimg.com/originals/f0/b2/6b/f0b26b56eefd7ed7b3e2300fb069c4f1.jpg"
-                            alt="Card image cap" style="height: 190px;">
-                        <div class="card-body mx-auto">
-                            <h5 class="card-title">How To Become Avid Reader</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">17 July 2020</h6>
-                            <p class="card-text">Yes I know you probably disregarded the earlier boasts as
-                                non-sequitur filler content, but its really
-                                true....</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card mb-3" style="height: 410px;">
-                        <img class=" card-img-top"
-                            src="https://cdn.eventfinda.co.nz/uploads/events/transformed/1322960-587318-14.jpg"
-                            alt="Card image cap" style="height: 190px;">
-                        <div class="card-body mx-auto">
-                            <h5 class="card-title">Is Human really come from monkey ?</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">17 July 2020</h6>
-                            <p class="card-text">Yes I know you probably disregarded the earlier boasts as
-                                non-sequitur filler content, but its really
-                                true....</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                <% }) %>
             </div>
         </div>
 
