@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>MrafCommand Podcast</title>
+    <!-- Semantic UI -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Code for fixed Menu and Open Sidebar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/visibility.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/sidebar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.js"></script>
+    <script>
+        $(document)
+            .ready(function () {
+
+                // fix menu when passed
+                $('.masthead')
+                    .visibility({
+                        once: false,
+                        onBottomPassed: function () {
+                            $('.fixed.menu').transition('fade in');
+                        },
+                        onBottomPassedReverse: function () {
+                            $('.fixed.menu').transition('fade out');
+                        }
+                    });
+
+                // create sidebar and attach to menu open
+                $('.ui.sidebar')
+                    .sidebar('attach events', '.toc.item');
+
+            });
+    </script>
+    <style>
+        .masthead h2.ui.header {
+            margin-top: 3em;
+            margin-bottom: 0em;
+            font-size: 4em;
+            font-weight: normal;
+        }
+
+        .masthead h2 {
+            font-size: 1.7em;
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed hidden menu">
+        <div class="ui container">
+            <div class="item">
+                <h2>MFG</h2>
+            </div>
+            <div class="right menu">
+                <a class="item">Home</a>
+                <a class="item">Article</a>
+                <a class="active item">Podcast</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div class="ui vertical inverted sidebar menu">
+        <a class="item">Home</a>
+        <a class="item">Article</a>
+        <a class="active item">Podcast</a>
+
+    </div>
+
+    <div class="pusher">
+        <!-- BIG HEADER OR BANNER -->
+        <div class="ui inverted vertical masthead center aligned segment">
+            <div class="ui container ">
+                <div class="ui large secondary inverted pointing menu">
+                    <div class="item">
+                        <h2>MFG</h2>
+                    </div>
+                    <div class="right menu">
+                        <a class="item" href="/">Home</a>
+                        <a class="item" href="/article">Article</a>
+                        <a class="active item" href="/podcast">Podcast</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ui text container">
+                <h2 class="ui inverted header">
+                    MrafCommand Studio
+                </h2>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <div class="my-3 spotify-embed">
+                <iframe src="https://open.spotify.com/embed-podcast/episode/0BJb5p4OOsiqNY9CY8CnAx" width="100%"
+                    height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="my-3 spotify-embed">
+                <iframe src="https://open.spotify.com/embed-podcast/episode/5cMRcn0ZmrTI8LDNoXSaNL" width="100%"
+                    height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div class="my-3 spotify-embed">
+                <iframe src="https://open.spotify.com/embed-podcast/episode/5CqZZDYFSL1efh3MKlQmlz" width="100%"
+                    height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+        </div>
+
+        <%- include("partials/footer") %>
+    </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- Semantic.JS -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
