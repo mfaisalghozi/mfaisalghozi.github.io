@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
 
-
 //AUTH NPM
 var passport = require('passport');
 var localStrategy = require('passport-local');
@@ -66,7 +65,6 @@ app.get('/article/new', function (req, res) {
     res.render('articleNew');
 });
 
-
 app.post('/article', function (req, res) {
     var d = new Date();
     var newArticle = new Article({
@@ -87,7 +85,14 @@ app.post('/article', function (req, res) {
 
 app.get('/article/:id', function (req, res) {
     var id = req.params.id;
-    res.render('article_show');
+    Article.findById(id, function (err, found) {
+        if (err) console.log(err);
+        else {
+            res.render('article_show', {
+                article: found
+            });
+        }
+    });
 });
 
 app.get('/article/:id/edit', function (req, res) {

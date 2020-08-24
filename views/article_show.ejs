@@ -16,8 +16,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="./function/art_show_func.js"></script>
+
     <!-- Site Properties -->
     <title>Sticky Example - Semantic</title>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/visibility.min.js"></script>
@@ -115,7 +118,6 @@
             font-weight: normal;
         }
     </style>
-
 </head>
 
 <body>
@@ -168,12 +170,26 @@
                         <div class="col-sm-12 my-5">
                             <p class="lead">Blog Category</p>
                             <ul class="list-group">
-                                <li class="list-group-item">Philosophy</li>
-                                <li class="list-group-item">Computer Science</li>
-                                <li class="list-group-item">Self Improvement</li>
-                                <li class="list-group-item active">Science</li>
-                                <li class="list-group-item">Book</li>
-                                <li class="list-group-item">Gaming</li>
+                                <li class=" list-group-item 
+                            <%if(article.category === "Philosophy"){%>
+                                <%= 'active' %>
+                            <% } %>" id="L1">
+                                    Philosophy</li>
+                                <li class="list-group-item <%if(article.category === "Computer Science"){%>
+                                    <%= 'active' %>
+                                <% } %>" id="L2">Computer Science</li>
+                                <li class="list-group-item <%if(article.category === "Self Improvement"){%>
+                                    <%= 'active' %>
+                                <% } %>" id="L3">Self Improvement</li>
+                                <li class="list-group-item <%if(article.category === "Science"){%>
+                                    <%= 'active' %>
+                                <% } %>" id="L4">Science</li>
+                                <li class="list-group-item <%if(article.category === "Book"){%>
+                                    <%= 'active' %>
+                                <% } %>" id="L5">Book</li>
+                                <li class="list-group-item <%if(article.category === "Game"){%>
+                                    <%= 'active' %>
+                                <% } %>" id="L6">Gaming</li>
                             </ul>
                         </div>
                         <div class="col-sm-12 my-3">
@@ -193,153 +209,21 @@
                 </div>
                 <div class="col-md-9">
                     <div class="card">
-                        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/andromeda-galaxy-royalty-free-image-1585682435.jpg"
-                            class="card-img-top" alt="Camping-Image">
+                        <img src="<%= article.image %>" class=" card-img-top" alt="Camping-Image">
                         <card class="card-body">
                             <div class="row mb-2">
                                 <div class="col-md-12">
-                                    <h3 class="card-title">What We Can learn From Space As Human ?</h3>
+                                    <h3 class="card-title"><%= article.name %> </h3>
                                 </div>
                                 <div class="col-md-12">
-                                    <p class="lead float-left text-muted font-italic" style="font-size: 15px;">Written
+                                    <p class="lead float-left text-muted font-italic" style="font-size: 15px;">
+                                        Written
                                         By MrafCommand</p>
                                 </div>
                             </div>
                             <!--  -->
                             <p class="card-text">
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                    egestas.
-                                    Vestibulum
-                                    tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-                                    sit amet quam
-                                    egestas
-                                    semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit
-                                    amet est et sapien
-                                    ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
-                                    sit amet, wisi.
-                                    Aenean
-                                    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
-                                    lacus enim ac
-                                    dui.
-                                    Donec
-                                    non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
-                                    faucibus, tortor
-                                    neque
-                                    egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
-                                    tincidunt quis,
-                                    accumsan
-                                    porttitor, facilisis luctus, metus</p>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                    egestas.
-                                    Vestibulum
-                                    tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-                                    sit amet quam
-                                    egestas
-                                    semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit
-                                    amet est et sapien
-                                    ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
-                                    sit amet, wisi.
-                                    Aenean
-                                    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
-                                    lacus enim ac
-                                    dui.
-                                    Donec
-                                    non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
-                                    faucibus, tortor
-                                    neque
-                                    egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
-                                    tincidunt quis,
-                                    accumsan
-                                    porttitor, facilisis luctus, metus</p>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                    egestas.
-                                    Vestibulum
-                                    tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-                                    sit amet quam
-                                    egestas
-                                    semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit
-                                    amet est et sapien
-                                    ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
-                                    sit amet, wisi.
-                                    Aenean
-                                    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
-                                    lacus enim ac
-                                    dui.
-                                    Donec
-                                    non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
-                                    faucibus, tortor
-                                    neque
-                                    egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
-                                    tincidunt quis,
-                                    accumsan
-                                    porttitor, facilisis luctus, metus</p>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                    egestas.
-                                    Vestibulum
-                                    tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-                                    sit amet quam
-                                    egestas
-                                    semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit
-                                    amet est et sapien
-                                    ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
-                                    sit amet, wisi.
-                                    Aenean
-                                    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
-                                    lacus enim ac
-                                    dui.
-                                    Donec
-                                    non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
-                                    faucibus, tortor
-                                    neque
-                                    egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
-                                    tincidunt quis,
-                                    accumsan
-                                    porttitor, facilisis luctus, metus</p>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                    egestas.
-                                    Vestibulum
-                                    tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-                                    sit amet quam
-                                    egestas
-                                    semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit
-                                    amet est et sapien
-                                    ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
-                                    sit amet, wisi.
-                                    Aenean
-                                    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
-                                    lacus enim ac
-                                    dui.
-                                    Donec
-                                    non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
-                                    faucibus, tortor
-                                    neque
-                                    egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
-                                    tincidunt quis,
-                                    accumsan
-                                    porttitor, facilisis luctus, metus</p>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-                                    egestas.
-                                    Vestibulum
-                                    tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-                                    sit amet quam
-                                    egestas
-                                    semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit
-                                    amet est et sapien
-                                    ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
-                                    sit amet, wisi.
-                                    Aenean
-                                    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
-                                    lacus enim ac
-                                    dui.
-                                    Donec
-                                    non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
-                                    faucibus, tortor
-                                    neque
-                                    egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
-                                    tincidunt quis,
-                                    accumsan
-                                    porttitor, facilisis luctus, metus</p>
-
+                                <p><%= article.text %> </p>
                             </p>
                             <div class="content-editUpload row">
                                 <div class="col-md-1">
