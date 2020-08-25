@@ -106,6 +106,7 @@
 
         <div class="ui hidden divider"></div>
         <div class="container">
+            <button type="button" class="btn btn-success btn-lg btn-block">Add New Article</button>
             <div class="row my-5">
                 <% data.forEach(function(article){%>
                 <div class="col-lg-4">
@@ -115,7 +116,7 @@
                         <div class="card-body mx-auto">
                             <h5 class="card-title"><%= article.name %> </h5>
                             <h6 class="card-subtitle mb-2 text-muted"><%= article.date %> </h6>
-                            <p class="card-text"><%= article.text.substring(0, 100) %>...</p>
+                            <p class="card-text"><%- article.text.substring(0, 100) %>...</p>
                             <a href="/article/<%= article._id %> " class="btn btn-primary">Read More</a>
                         </div>
                     </div>

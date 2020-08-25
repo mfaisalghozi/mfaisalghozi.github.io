@@ -223,14 +223,14 @@
                             </div>
                             <!--  -->
                             <p class="card-text">
-                                <p><%= article.text %> </p>
+                                <p><%- article.text %> </p>
                             </p>
                             <div class="content-editUpload row">
                                 <div class="col-md-1">
-                                    <a href="#" class="btn btn-warning">Edit</a>
+                                    <a href="/article/<%= article._id %>/edit" class="btn btn-warning">Edit</a>
                                 </div>
                                 <div class="col-md-1 float-left">
-                                    <form action="#" method="POST">
+                                    <form action="/article/<%= article._id %>?_method=DELETE" method="POST">
                                         <button class="btn btn-danger">Delete</button>
                                     </form>
                                 </div>

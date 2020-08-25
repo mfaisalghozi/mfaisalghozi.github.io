@@ -96,11 +96,32 @@ app.get('/article/:id', function (req, res) {
 });
 
 app.get('/article/:id/edit', function (req, res) {
-
+    Article.findById(req.params.id, function (err, found) {
+        res.render('articleUpdate', {
+            article: found
+        })
+    })
 });
 
-app.get('/article/:id/delete', function (req, res) {
+app.put('/article/:id', function (req, res) {
+    Article.findByIdAndUpdate(req.params.id, req.body.article, function (err, found) {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('Update Success !');
+            res.redirect('/article/' + req.params.id);
+        }
+    })
+})
 
+app.delete('/article/:id', function (req, res) {
+    Article.findByIdAndRemove(req.params.id, function (err, article) {
+        if (err) res.redirect('/');
+        else {
+            console.log("Success Delete An Article !");
+            res.redirect('/article');
+        }
+    })
 });
 
 //=====
