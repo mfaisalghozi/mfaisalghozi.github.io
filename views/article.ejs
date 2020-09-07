@@ -106,7 +106,10 @@
 
         <div class="ui hidden divider"></div>
         <div class="container">
-            <button type="button" class="btn btn-success btn-lg btn-block">Add New Article</button>
+            <% if(currentUser && currentUser.username === 'mraf') {%>
+            <a href="/article/new" class="btn btn-success btn-lg btn-block">Add New Article</a>
+            <% } %>
+
             <div class="row my-5">
                 <% data.forEach(function(article){%>
                 <div class="col-lg-4">

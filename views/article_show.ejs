@@ -225,6 +225,7 @@
                             <p class="card-text">
                                 <p><%- article.text %> </p>
                             </p>
+                            <% if(currentUser && currentUser.username === 'mraf') {%>
                             <div class="content-editUpload row">
                                 <div class="col-md-1">
                                     <a href="/article/<%= article._id %>/edit" class="btn btn-warning">Edit</a>
@@ -235,6 +236,7 @@
                                     </form>
                                 </div>
                             </div>
+                            <% } %>
                             <!-- <div class="content-review row">
                                 <div class="col-md-6 review-information">
                                     <p class="card-text"><small class="text-danger">3.25 Stars</small></p>

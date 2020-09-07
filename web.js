@@ -19,10 +19,28 @@ mongoose.connect('mongodb://localhost:27017/mrafcommand_website_db', {
     .then(() => console.log('Connected To Database !'))
     .catch(error => console.log(error.message));
 
-
 //MODEL FILE
 var Article = require('./models/article');
 var Podcast = require('./models/podcast');
+var User = require('./models/user');
+
+//PASSPORT AUTH CONFIG
+app.use(require('express-session')({
+    secret: 'this is secret msg',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(function (req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
+
 
 //APP CONFIG
 app.use(methodOverride('_method'));
@@ -164,11 +182,36 @@ app.get('/register', function (req, res) {
     res.render('register');
 });
 
+app.post('/register', function (req, res) {
+    var newUser = new User({
+        username: req.body.username
+    })
+    User.register(newUser, req.body.password, function (err, user) {
+        if (err) {
+            console.log(err.message);
+            return res.render('register');
+        }
+        console.log('New Acc has been created !');
+        res.redirect('/');
+    })
+});
+
 app.get('/login', function (req, res) {
     res.render('login');
 });
 
-app.get('/logout', function (req, res) {});
+app.post('/login', passport.authenticate('local', {
+    failureRedirect: '/login'
+}), function (req, res) {
+    console.log('Login as ' + req.user.username);
+    res.redirect('/');
+});
+
+app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+});
+
 
 //CREATING CONNECTION
 app.listen('3000', function () {
