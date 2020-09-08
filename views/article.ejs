@@ -106,12 +106,15 @@
 
         <div class="ui hidden divider"></div>
         <div class="container">
+            <% console.log('before function check user mraf') %>
             <% if(currentUser && currentUser.username === 'mraf') {%>
             <a href="/article/new" class="btn btn-success btn-lg btn-block">Add New Article</a>
             <% } %>
 
             <div class="row my-5">
+                <% console.log('Still working in here') %>
                 <% data.forEach(function(article){%>
+                <% console.log("after function foreach") %>
                 <div class="col-lg-4">
                     <div class="card mb-5" style="height: 410px;">
                         <img class=" card-img-top" src="<%= article.image %> " alt="Card image cap"

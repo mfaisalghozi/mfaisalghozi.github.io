@@ -5,11 +5,16 @@ var router = express.Router();
 var Article = require('../models/article');
 
 router.get('/article', function (req, res) {
+    console.log('going to article page');
     Article.find({}, function (err, article) {
         if (err) console.log(err);
-        else res.render('article', {
-            data: article
-        });
+        else {
+            console.log("looking for article !");
+            res.render('article', {
+                data: article
+            });
+            console.log("after lookiing article !");
+        }
     });
 });
 

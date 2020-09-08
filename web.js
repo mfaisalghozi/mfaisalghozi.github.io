@@ -12,9 +12,10 @@ var localStrategy = require('passport-local');
 var passportLocalMongoose = require('passport-local-mongoose');
 
 //DATABASE CONNECTION
-mongoose.connect('mongodb://localhost:27017/mrafcommand_website_db', {
+mongoose.connect('mongodb+srv://mrafgaming:mfaisalghozi300599@cluster0.a6fw4.mongodb.net/mrafcommand_website_db?retryWrites=true&w=majority', {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex: true
     })
     .then(() => console.log('Connected To Database !'))
     .catch(error => console.log(error.message));
@@ -24,6 +25,11 @@ mongoose.connect('mongodb://localhost:27017/mrafcommand_website_db', {
 var articleRoute = require('./routes/article');
 var mainRoute = require('./routes/main');
 var podcastRoute = require('./routes/podcast');
+
+//ROUTER CONFIG
+app.use(articleRoute);
+app.use(mainRoute);
+app.use(podcastRoute);
 
 //MODEL FILE
 var Article = require('./models/article');
@@ -55,11 +61,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static('views'));
 app.set('view engine', 'ejs');
-
-//ROUTER CONFIG
-app.use(articleRoute);
-app.use(mainRoute);
-app.use(podcastRoute);
 
 //=====
 //API TESTING 
