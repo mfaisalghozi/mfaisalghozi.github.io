@@ -19,6 +19,12 @@ mongoose.connect('mongodb://localhost:27017/mrafcommand_website_db', {
     .then(() => console.log('Connected To Database !'))
     .catch(error => console.log(error.message));
 
+
+//ROUTER FILE
+var articleRoute = require('./routes/article');
+var mainRoute = require('./routes/main');
+var podcastRoute = require('./routes/podcast');
+
 //MODEL FILE
 var Article = require('./models/article');
 var Podcast = require('./models/podcast');
@@ -50,6 +56,10 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('views'));
 app.set('view engine', 'ejs');
 
+//ROUTER CONFIG
+app.use(articleRoute);
+app.use(mainRoute);
+app.use(podcastRoute);
 
 //=====
 //API TESTING 
@@ -70,150 +80,20 @@ app.get('/testingApi', function (req, res) {
 //=====
 //ROUTE ARTICLE
 //=====
-app.get('/article', function (req, res) {
-    Article.find({}, function (err, article) {
-        if (err) console.log(err);
-        else res.render('article', {
-            data: article
-        });
-    });
-});
 
-app.get('/article/new', function (req, res) {
-    res.render('articleNew');
-});
-
-app.post('/article', function (req, res) {
-    var d = new Date();
-    var newArticle = new Article({
-        name: req.body.title,
-        image: req.body.image,
-        text: req.body.content,
-        date: d.toDateString(),
-        category: req.body.category
-    })
-
-    newArticle.save(function (err) {
-        if (err) console.log(err);
-        else console.log('New Article has been published !');
-    })
-
-    res.redirect('/article');
-});
-
-app.get('/article/:id', function (req, res) {
-    var id = req.params.id;
-    Article.findById(id, function (err, found) {
-        if (err) console.log(err);
-        else {
-            res.render('article_show', {
-                article: found
-            });
-        }
-    });
-});
-
-app.get('/article/:id/edit', function (req, res) {
-    Article.findById(req.params.id, function (err, found) {
-        res.render('articleUpdate', {
-            article: found
-        })
-    })
-});
-
-app.put('/article/:id', function (req, res) {
-    Article.findByIdAndUpdate(req.params.id, req.body.article, function (err, found) {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log('Update Success !');
-            res.redirect('/article/' + req.params.id);
-        }
-    })
-})
-
-app.delete('/article/:id', function (req, res) {
-    Article.findByIdAndRemove(req.params.id, function (err, article) {
-        if (err) res.redirect('/');
-        else {
-            console.log("Success Delete An Article !");
-            res.redirect('/article');
-        }
-    })
-});
 
 //=====
 //ROUTE PODCAST
 //=====
-app.get('/podcast', function (req, res) {
-    Podcast.find({}, function (err, podcast) {
-        if (err) console.log(err);
-        else res.render('podcast', {
-            data: podcast
-        })
-    })
-});
 
-app.get('/podcast/new', function (req, res) {
-    res.render('podcastNew');
-});
-
-app.post('/podcast', function (req, res) {
-    var newPodcast = new Podcast({
-        podcastUrl: String
-    });
-
-    newPodcast.save(function (err) {
-        if (err) console.log(err);
-        else console.log('New Podcast is Release !');
-    })
-
-    res.redirect('/podcast');
-})
 
 //=====
 //ROUTE FOR MAIN CONFIG
 //=====
-app.get('/', function (req, res) {
-    res.render('home');
-});
-
-app.get('/register', function (req, res) {
-    res.render('register');
-});
-
-app.post('/register', function (req, res) {
-    var newUser = new User({
-        username: req.body.username
-    })
-    User.register(newUser, req.body.password, function (err, user) {
-        if (err) {
-            console.log(err.message);
-            return res.render('register');
-        }
-        console.log('New Acc has been created !');
-        res.redirect('/');
-    })
-});
-
-app.get('/login', function (req, res) {
-    res.render('login');
-});
-
-app.post('/login', passport.authenticate('local', {
-    failureRedirect: '/login'
-}), function (req, res) {
-    console.log('Login as ' + req.user.username);
-    res.redirect('/');
-});
-
-app.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
-});
 
 
 //CREATING CONNECTION
-app.listen('3000', function () {
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
     console.log('MrafCommand Website Server Is Running !');
 });
