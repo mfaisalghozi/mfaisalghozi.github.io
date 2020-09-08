@@ -26,11 +26,6 @@ var articleRoute = require('./routes/article');
 var mainRoute = require('./routes/main');
 var podcastRoute = require('./routes/podcast');
 
-//ROUTER CONFIG
-app.use(articleRoute);
-app.use(mainRoute);
-app.use(podcastRoute);
-
 //MODEL FILE
 var Article = require('./models/article');
 var Podcast = require('./models/podcast');
@@ -61,6 +56,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static('views'));
 app.set('view engine', 'ejs');
+
+//ROUTER CONFIG
+app.use(articleRoute);
+app.use(mainRoute);
+app.use(podcastRoute);
+
 
 //=====
 //API TESTING 
