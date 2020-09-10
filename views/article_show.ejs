@@ -247,6 +247,39 @@
                             </div> -->
                         </card>
                     </div>
+                    <div class="comment my-3">
+                        <div class="ui comments">
+                            <h3 class="ui dividing header">Comments</h3>
+                            <% article.comments.forEach(function(komen){ %>
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img
+                                        src="https://pbs.twimg.com/profile_images/707968846880227328/ylFJEqxn_400x400.jpg">
+                                </a>
+                                <div class="content">
+                                    <a class="author"><%= komen.author %> </a>
+
+                                    <div class="metadata">
+                                        <span class="date"><%= komen.date %> </span>
+                                    </div>
+                                    <div class="text">
+                                        <%= komen.text %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                            <form class="ui reply form" action="/article/<%= article._id %>/comment" method="POST">
+                                <input type="text" class="form-control mb-2" id="name" placeholder="Input Your Name"
+                                    name="author">
+                                <div class="field">
+                                    <textarea name="text"></textarea>
+                                </div>
+                                <button type="submit" class="ui blue labeled submit icon button"><i
+                                        class="icon edit"></i> Add Reply</button>
+                            </form>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 

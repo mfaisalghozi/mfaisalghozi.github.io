@@ -3,6 +3,10 @@ var router = express.Router();
 
 //FILE REQUIREMENT
 var Article = require('../models/article');
+var Comment = require('../models/comment');
+const {
+    populate
+} = require('../models/comment');
 
 router.get('/article', function (req, res) {
 
@@ -42,7 +46,7 @@ router.post('/article', function (req, res) {
 
 router.get('/article/:id', function (req, res) {
     var id = req.params.id;
-    Article.findById(id, function (err, found) {
+    Article.findById(id).populate('comments').exec(function (err, found) {
         if (err) console.log(err);
         else {
             res.render('article_show', {
@@ -51,6 +55,29 @@ router.get('/article/:id', function (req, res) {
         }
     });
 });
+
+router.post('/article/:id/comment', function (req, res) {
+    var id = req.params.id;
+    Article.findById(id, function (err, foundArticle) {
+        if (err) console.log(err);
+        else {
+            var d = new Date();
+            Comment.create({
+                text: req.body.text,
+                author: req.body.author,
+                date: d.toString()
+            }, function (err, comment) {
+                if (err) console.log(err);
+                else {
+                    //ADD RELATIONSHIP
+                    foundArticle.comments.push(comment);
+                    foundArticle.save();
+                    res.redirect('/article/' + id);
+                }
+            })
+        }
+    })
+})
 
 router.get('/article/:id/edit', function (req, res) {
     Article.findById(req.params.id, function (err, found) {

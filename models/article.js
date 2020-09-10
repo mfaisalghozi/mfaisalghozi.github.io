@@ -5,7 +5,11 @@ var articleSchema = new mongoose.Schema({
     image: String,
     text: String,
     date: String,
-    category: String
+    category: String,
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }]
 });
 
 module.exports = mongoose.model("Article", articleSchema);

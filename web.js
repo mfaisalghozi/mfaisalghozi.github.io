@@ -29,6 +29,7 @@ var podcastRoute = require('./routes/podcast');
 //MODEL FILE
 var Article = require('./models/article');
 var Podcast = require('./models/podcast');
+var Comment = require('./models/comment');
 var User = require('./models/user');
 
 //PASSPORT AUTH CONFIG
