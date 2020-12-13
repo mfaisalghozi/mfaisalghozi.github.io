@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
+const config = require('dotenv').config();
 const db = process.env.MONGODB_URL;
 
 //AUTH NPM
@@ -13,7 +14,7 @@ var localStrategy = require('passport-local');
 var passportLocalMongoose = require('passport-local-mongoose');
 
 //DATABASE CONNECTION
-mongoose.connect('db', {
+mongoose.connect(db, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true
