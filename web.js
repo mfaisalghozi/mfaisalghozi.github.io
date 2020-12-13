@@ -13,7 +13,7 @@ var localStrategy = require('passport-local');
 var passportLocalMongoose = require('passport-local-mongoose');
 
 //DATABASE CONNECTION
-mongoose.connect('mongodb+srv://mrafgaming:mfaisalghozi300599@cluster0.a6fw4.mongodb.net/mrafcommand_website_db?retryWrites=true&w=majority', {
+mongoose.connect('db', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true
@@ -32,6 +32,7 @@ var Article = require('./models/article');
 var Podcast = require('./models/podcast');
 var Comment = require('./models/comment');
 var User = require('./models/user');
+
 
 //PASSPORT AUTH CONFIG
 app.use(require('express-session')({
