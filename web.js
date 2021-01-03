@@ -61,6 +61,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('views'));
 app.set('view engine', 'ejs');
 
+
 //ROUTER CONFIG
 app.use(articleRoute);
 app.use(mainRoute);
@@ -81,22 +82,6 @@ app.get('/testingApi', function (req, res) {
             }
         })
 });
-
-
-//=====
-//ROUTE ARTICLE
-//=====
-
-
-//=====
-//ROUTE PODCAST
-//=====
-
-
-//=====
-//ROUTE FOR MAIN CONFIG
-//=====
-
 
 //CREATING CONNECTION
 var port = process.env.PORT || 3000;
