@@ -9,15 +9,12 @@ const {
 } = require('../models/comment');
 
 router.get('/article', function (req, res) {
-
     Article.find({}, function (err, article) {
         if (err) console.log(err);
         else {
-
             res.render('article', {
                 data: article
             });
-
         }
     });
 });
