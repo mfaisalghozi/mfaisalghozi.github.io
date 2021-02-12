@@ -22,7 +22,6 @@ mongoose.connect(db, {
     .then(() => console.log('Connected To Database !'))
     .catch(error => console.log(error.message));
 
-
 //ROUTER FILE
 var articleRoute = require('./routes/article');
 var mainRoute = require('./routes/main');
